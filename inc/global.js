@@ -1,14 +1,18 @@
 var mysql = require("mysql");
+var pg = require('pg');
 var Twit = require("twit");
 
     module.exports =  {
         GetConnection: function(){
-            var conn = mysql.createConnection({
+            
+            var conn = pg.connect(process.env.DATABASE_URL);
+            
+            /*var conn = mysql.createConnection({
               host: "localhost",
               user: "anthonybjturner",
               password: "",
               database: "turnera1_db"
-            });
+            });*/
         return conn;
     },
     

@@ -4,6 +4,7 @@
   "description": "Fitness app modules",
   "main": "express.js",
   "dependencies": {
+    "pg": "4.x",
     "body-parser": "^1.14.1",
     "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
