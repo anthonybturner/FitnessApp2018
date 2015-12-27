@@ -23,9 +23,13 @@ angular.module("app")
                 }
             }).then(function(data) {
 
-                self.rows = data.data;
                 self.totalCals = 0;
                 self.totalFat = 0, self.totalSodium = 0;
+                
+                if( data ){
+                    self.rows = data.data;
+                }
+               
 
                 for (var i = 0; i < self.rows.length; i++) { //Total column nutritions
 
