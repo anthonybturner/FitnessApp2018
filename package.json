@@ -11,19 +11,12 @@
     "mysql": "^2.9.0",
     "twit": "^2.1.1",
     "unirest": "^0.4.2"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/anthonybjturner/2015FallWeb.git"
+  },"engines": {
+    "node": "0.12.2"
   },
   "author": "Anthony Turner",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/anthonybjturner/2015FallWeb/issues"
-  },
-  "homepage": "https://github.com/anthonybjturner/2015FallWeb"
+  }
 }
