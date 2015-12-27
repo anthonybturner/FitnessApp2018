@@ -87,11 +87,8 @@ angular.module("app")
                       });
                         
 
-        $http.get("/login").then(function(data) { //Get a pseudo random user id and gather data based on that user
-
-
-            self.users_id = data.data.users_id;
-            $http.get('/exercise/' + data.data.users_id).then(function(data) {
+       
+            $http.get('/exercise').then(function(data) {
 
                 if (data.data)
                     self.rows = data.data;
@@ -99,8 +96,7 @@ angular.module("app")
 
             });
 
-        });
-
+       
 
 
         self.delete = function(row, index) {
