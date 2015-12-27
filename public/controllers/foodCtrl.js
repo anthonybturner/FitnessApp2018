@@ -16,12 +16,7 @@ angular.module("app")
         $scope.updateCalendar = function() {
 
 
-            $http.get('/food', {
-                params: {
-                    users_id: null,
-                    created_at: calendarService.date
-                }
-            }).then(function(data) {
+            $http.get('/food', {params: { users_id: null,  created_at: calendarService.date  }}).then(function(data) {
 
                 self.totalCals = 0;
                 self.totalFat = 0, self.totalSodium = 0;
@@ -160,11 +155,15 @@ angular.module("app")
         //Details button
         self.create = function() {
 
-            self.rows.push({
-                isEditing: true,
-                foods_id: null,
-                foodstypes_id: null
-            });
+            if( self.rows ){
+                
+                self.rows.push({
+                    isEditing: true,
+                    foods_id: null,
+                    foodstypes_id: null
+                });
+            
+            }
 
         }
 
