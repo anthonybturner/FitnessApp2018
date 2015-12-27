@@ -4,23 +4,12 @@ var Twit = require("twit");
 
     module.exports =  {
         GetConnection: function(){
-            
-            var conn = pg.connect(process.env.DATABASE_URL);
-            
-            pg.connect(process.env.DATABASE_URL, function(err, client) {
-              if (err) throw err;
-              console.log('Connected to postgres! Getting schemas...');
-            
-              return client
-                
-                
-            });
-            /*var conn = mysql.createConnection({
+            var conn = mysql.createConnection({
               host: "localhost",
               user: "anthonybjturner",
               password: "",
               database: "turnera1_db"
-            });*/
+            });
         return conn;
     },
     
