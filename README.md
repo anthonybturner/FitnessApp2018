@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# Fitness Tracker web app
+# Fitness App 2018 web app
 A web application for tracking nutrition, exercise, weight, and extra goals (eg. sleep).
 
 <b>Nutrition:</b> Tracks the number of calories, protien, fiber, cholestrol, and other nutritional factors in a day, week, month and year. The nutrition page records the current intake and gives a ratio of a total suggested intake. For example: the user wants a max of 300mg for cholestrol, and the current intake is 50 mg; therefore, the current ratio shown is: 50mg of 300mg (16.6% reached).
@@ -12,11 +11,7 @@ A web application for tracking nutrition, exercise, weight, and extra goals (eg.
 For example, setting goals for getting 8 hours of sleep each night.
 
 <b>TODO:</b> Add an enormous database of different foods with nutrition facts so the user does not need to input nutrition facts manually.
-
-https://fallweb2015-anthonybjturner.c9.io/ (newer SPA with NodeJs, Express, and AngularJs)
+https://fitnessapp-anthonybjturner.c9users.io/ (newer SPA with NodeJs, Express, and AngularJs)
 or
-http://cs.newpaltz.edu/~turnera1/WebProgramming/2015FallWeb/FitnessApp/ (Older non-SPA with MVC and non database calls)
-=======
-# FitnessApp2018
-A web application for tracking nutrition, exercise, weight, and extra goals (eg. sleep).
->>>>>>> 891d9d0122743526f25b12b93f4e611719d0e345
+http://anthonybturner.com/FitnessApp/ (More up-to-date non-SPA with MVC and non database calls)
+http://cs.newpaltz.edu/~turnera1/WebProgramming/2015FallWeb/FitnessApp/  (Much older non-SPA with MVC and non database calls)
