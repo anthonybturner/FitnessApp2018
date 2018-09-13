@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Fitness Tracker web app
 A web application for tracking nutrition, exercise, weight, and extra goals (eg. sleep).
 
@@ -15,3 +16,7 @@ For example, setting goals for getting 8 hours of sleep each night.
 https://fallweb2015-anthonybjturner.c9.io/ (newer SPA with NodeJs, Express, and AngularJs)
 or
 http://cs.newpaltz.edu/~turnera1/WebProgramming/2015FallWeb/FitnessApp/ (Older non-SPA with MVC and non database calls)
+=======
+# FitnessApp2018
+A web application for tracking nutrition, exercise, weight, and extra goals (eg. sleep).
+>>>>>>> 891d9d0122743526f25b12b93f4e611719d0e345
