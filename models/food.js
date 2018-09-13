@@ -41,7 +41,7 @@ module.exports =  {
           conn.end();
         });        
     },getByDate: function(row, ret){
-      
+    
         var conn = global.GetConnection();
         var sql = "select  foods.foods_calories, foods.updated_at, foods.foods_id, foods.foods_name, foods.foods_calories, foods.foods_carbohydrates, foods.foods_fiber, "+
         "foods.foods_protein, foods.foods_cholestrol, foods.users_id, foods.foodstypes_id, foods.foods_carbohydrates, foods.foods_fat, foods.foods_polyunsaturated_fat,  "+
@@ -56,6 +56,8 @@ module.exports =  {
         });    
     },getWeekTotals: function(row, ret){
       
+
+        console.log("In db");
         var conn = global.GetConnection();
         var sql = "select count(foods.foods_name) as TotalMeals, "+
           "sum(foods.foods_calories) as TotalCalories, "+
@@ -67,7 +69,7 @@ module.exports =  {
           "sum(foods.foods_monounsaturated_fat) as TotalMonounsaturatedFat, "+
           "sum(foods.foods_carbohydrates) as TotalCarbohydrates, "+
           "sum(foods.foods_protein) as TotalProtein "+
-          "FROM Foods foods  where foods.users_id="+row.users_id+" and foods.created_at BETWEEN '"+row.start_date+ "' and '" + row.end_date + "'";
+          "FROM Foods foods  where  foods.created_at BETWEEN '"+row.start_date+ "' and '" + row.end_date + "'";
         
  
         conn.query(sql, function(err,rows){
@@ -110,6 +112,8 @@ module.exports =  {
       
         var sql, rows;
         var conn = global.GetConnection();
+          console.log(row);
+
         //  TODO Sanitize
         if (row.foods_id) {
 				  sql = " Update Foods "

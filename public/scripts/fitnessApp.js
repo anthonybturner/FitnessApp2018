@@ -84,6 +84,12 @@ angular.module("app", ['ngRoute',  'fitnessapp.directives'])
                 controller: 'loginCtrl', controllerAs: 'vm'
 
               }).
+              when('/logout', {
+              
+                templateUrl: 'views/authentication/logout.html',
+                controller: 'logoutCtrl', controllerAs: 'vm'
+
+              }).
               otherwise({
 
                 redirectTo: '/'
@@ -106,7 +112,7 @@ angular.module("app", ['ngRoute',  'fitnessapp.directives'])
                            if ( next.templateUrl != "/views/authentication/login.html" ) {	
                              
                               // Not going to #login,  redirect needed
-                              $location.url("/authlogin")
+                             // $location.url("/authlogin") 9-12-18
                             }
                          }
                         

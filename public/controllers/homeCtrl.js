@@ -27,8 +27,8 @@ angular.module("app")
             }
         }).then(function(data) {
 
-            self.goal_rows = data.data;
-            startGoalsGraph(data.data[0]);
+            self.goal_rows = JSON.stringify(data.data);
+            startGoalsGraph(  JSON.stringify(data.data));
            
         });
 
@@ -40,7 +40,7 @@ angular.module("app")
         }).then(function(data) {
 
             self.food_rows = data.data;
-            startFoodsGraph(data.data[0]);
+            startFoodsGraph( JSON.stringify(data.data));
 
         });
 

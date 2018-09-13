@@ -1,8 +1,11 @@
 angular.module("app")
     .controller('fbCtrl', function($rootScope, facebook, $location, $http) {
         var self = this;
+        
+      
         facebook.getUser().then(function(fbUser) {
 
+            console.log("fbuserCTRL.js: Get user");
             if (fbUser) {
 
                 self.fbUser = fbUser;
@@ -10,7 +13,7 @@ angular.module("app")
             }
             else {
                 //The user has been logged out, so redirect them to login page
-                $location.url("/authlogin");
+               // $location.url("/authlogin");
 
 
             }
@@ -22,7 +25,7 @@ angular.module("app")
             facebook.login().then(function(fbUser) {
 
                 self.fbUser = fbUser;
-               
+              
                 $http.post('/fbLocalLogin', {
                     facebookUser: fbUser
                 }).then(function(data) {
@@ -34,5 +37,15 @@ angular.module("app")
                 })
 
             })
+        }
+        
+         self.logout = function() {
+
+                $rootScope.loggedIn = null;
+                self.fbUser = null;
+               $location.url("/login");
+             
+               console.log("fbUserCtrl.js: logout ");
+               console.log(self.fbUser);
         }
     })

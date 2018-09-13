@@ -11,7 +11,7 @@ module.exports =  {
           sql += " WHERE exercises.users_id = " + id;
         }
         conn.query(sql, function(err,rows){
-        
+
           ret(err,rows);
           conn.end();
         });        
@@ -79,9 +79,7 @@ module.exports =  {
     save: function(row, ret){
         var sql;
         var conn = global.GetConnection();
-        //  TODO Sanitize
-      
-      
+   
         if (row.exercises_id) {
 				  sql = " Update Exercises "
 							+ " Set created_at=?, updated_at= NOW(), exercises_name=?, exercises_minutes=? , exercises_calories_burned=?, users_id=?, exercisestypes_id=?"

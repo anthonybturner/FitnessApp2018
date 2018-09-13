@@ -142,19 +142,25 @@ app.get("/food", function(req, res) {
 
   }).get("/foodWeekTotals", function(req, res) {//Get food totals by a weekly date range
 
+  
    if (req.session && req.session.fbUser) {
+        console.log("express.js: foodWeekTotals - " + JSON.stringify(req.session));
+        console.log("express.js: foodWeekTotals - " + JSON.stringify(req.query));
 
       var row = {
         
-        users_id: req.session.fbUser.users_id,
+       // users_id: req.session.fbUser.facebook_id,
         start_date : req.query.start_date,
         end_date: req.query.end_date
         
       };
 
       food.getWeekTotals(row, function(err, rows) {
- 
-        res.send(rows);
+        
+        console.log("errors" + JSON.stringify(err));
+                console.log("rows" + JSON.stringify(rows));
+
+      res.send(rows);
 
       });
 
@@ -163,8 +169,9 @@ app.get("/food", function(req, res) {
   }).get("/exercise", function(req, res) {
 
 
-
     if (req.query.users_id) {
+
+    console.log("exercise by user id");
 
       exercise.getByUserId(req.query.users_id, function(err, rows) {
         res.send(rows);
@@ -172,10 +179,8 @@ app.get("/food", function(req, res) {
 
     }
     else if (req.session.fbUser) {
-
       var row = [req.session.fbUser.users_id, req.query.created_at];
       exercise.getByDate(row, function(err, rows) {
-
 
         res.send(rows);
 
@@ -341,7 +346,11 @@ app.get("/food", function(req, res) {
   
           goal.getByDate(row, function(err, rows) {
     
-            res.send(rows);
+            if( err ){
+               res.status(500).send(err);
+            }else{
+              res.send(rows);
+            }
     
           });
   
@@ -471,24 +480,23 @@ app.get("/food", function(req, res) {
     })
   }).post("/fbLocalLogin", function(req, res) {
 
-
     unirest.get("https://graph.facebook.com/me?access_token=" + req.body.facebookUser.access_token + "&fields=id,name,email, birthday")
       .end(function(result) {
         //result.body.user
         var fbUser = req.session.fbUser = JSON.parse(result.body);
 
         req.session.fbUser.access_token = req.body.access_token;
-
+            console.log(req.body.facebookUser);
+              console.log(" user " + JSON.stringify(req.session));
+              
         user.get(req.body.facebookUser.id, function(err, rows) {
 
           if (rows && rows.length) { //If we have that user then store there data
-
             req.session.fbUser = rows[0];
             req.session.save();
 
           }
           else {
-
             user.save({
               users_name: req.session.fbUser.name,
               facebook_id: req.session.fbUser.id,
@@ -501,6 +509,8 @@ app.get("/food", function(req, res) {
             }, function(err, row) {
 
               req.session.fbUser = row;
+                            console.log(" user " + JSON.stringify(row));
+
               req.session.save();
 
             })

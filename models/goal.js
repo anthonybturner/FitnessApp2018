@@ -9,7 +9,6 @@ module.exports =  {
        var sql = 'SELECT * FROM Goals';
 
         if(id){
-          
         
             switch (searchType) {
              
@@ -41,23 +40,44 @@ module.exports =  {
         });        
     },getByDate: function(row, ret){
       
+      
+        var users_id  = row[0];
+        if( users_id ){
         var conn = global.GetConnection();
-        var sql = "SELECT * , DATE_FORMAT(created_at,'%b %d %Y %h:%i %p') as created_at FROM Goals WHERE users_id = " + row[0] + " and created_at like '%"+row[1]+"%'";
+        
+        var sql = "SELECT * , DATE_FORMAT(created_at,'%b %d %Y %h:%i %p') as created_at FROM Goals WHERE users_id = " + users_id + " and created_at like '%"+row[1]+"%'";
         
         conn.query(sql).on('row', function(rows) {
           
-          console.log(JSON.stringify(rows));
+          console.log("Success getting goal by date goal.js: "+JSON.stringify(rows));
           ret(null, rows);
-          
-          
+
         });
         
+        }else{
+          
+          ret(null, row);
+        }
         
-        
-           
     },getWeekTotals: function(row, ret){
       
-       
+
+        var conn = global.GetConnection();
+        var sql = "select "+
+      "(select distinct count(goals.goals_accomplished) FROM Goals goals "+
+      	"where goals.goals_accomplished='Yes' and goals.created_at BETWEEN '" + row.start_date+ "' AND '" + row.end_date + "' and goals.users_id="+row.users_id+") as TotalAccomplishedGoals, "+ 
+      "(select distinct (count(goals.goals_accomplished)/count(g.goals_id))*100 FROM Goals goals "+
+      	"where goals.goals_accomplished='Yes' and goals.created_at BETWEEN '"+row.start_date+ "' and '" + row.end_date + "' and goals.users_id="+row.users_id+") as TotalAccomplishedGoalsPerc, "+ 
+      "count(g.goals_id) as TotalGoals "+
+      "FROM Goals g "+
+      	"where g.users_id="+row.users_id+" and g.created_at BETWEEN '"+ row.start_date + "' and '" +row.end_date+"'";
+        
+        conn.query(sql, function(err,rows){
+                          console.log("row week totals: "+JSON.stringify(rows));
+
+          ret(err,rows);
+          conn.end();
+        });        
     }
     ,getByUserId: function(id, ret){
         var conn = global.GetConnection();

@@ -8,7 +8,7 @@ var Twit = require("twit");
               host: "localhost",
               user: "anthonybjturner",
               password: "",
-              database: "turnera1_db"
+              database: "mydb"
             });
         return conn;
     },

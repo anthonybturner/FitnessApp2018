@@ -25,7 +25,7 @@ angular.module("app")
             $http.get('/goal', {
                 params: {
                     users_id: null,
-                    created_at: calendarService.date
+                    created_at: calendarService.date //Use selected calendar date to gather goals
                 }
             }).then(function(data) {
 

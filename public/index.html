@@ -9,17 +9,12 @@
 
   <title>Fitness App - {{title}}</title>
 
-  <!-- Bootstrap -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
   <link rel="stylesheet" type="text/less" href="css/calendar.css" />
 
 </head>
-<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js"></script> -->
-
 
 <body>
 
@@ -45,8 +40,6 @@
           <li><a ng-href="#/user"><img src="/images/aqua-users.png" height="40px" width="40px"/>Users</a></li>
           <li><a href="#/friend"><img src="/images/aqua-friends.png" height="40px" width="40px"/>Friends</a></li>
           <li><a href="#/profile"><img src="/images/aqua-profile.png" height="40px" width="40px"/>Profile</a></li>
-
-
         </ul>
 
 
@@ -54,16 +47,18 @@
           <div ng-controller="fbCtrl as fbCtrlUser">
 
             <div class="form-group" ng-if="fbCtrlUser.fbUser">
-
               <a href="#/profile" style="padding: 0" class="form-ctrl">
                       {{fbCtrlUser.fbUser.name}} 
-                      <img src="https://graph.facebook.com/{{fbCtrlUser.fbUser.id}}/picture" width="36px" height="36px"/>
-                    
-                    </a>
+                      <img src="https://graph.facebook.com/{{fbCtrlUser.fbUser.id}}/picture" width="20%" height="auto"/>
+              </a>
             </div>
 
             <div ng-if="!fbCtrlUser.fbUser">
               <input type="image" src="/images/fb-login-white.png" ng-click="fbCtrlUser.login()" />
+            </div>
+            
+             <div ng-if="fbCtrlUser.fbUser != null">
+              <a href="#" ng-click="fbCtrlUser.logout()" > Logout </a>
             </div>
           </div>
         </form>

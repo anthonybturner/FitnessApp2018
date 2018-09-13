@@ -44,7 +44,7 @@ module.exports =  {
         var conn = global.GetConnection();
         //  TODO Sanitize
         if (row.users_id) {
-          
+
 				  sql = " Update Users "
 							+ " Set updated_at=NOW(), users_name=?, users_age=? , users_height=? , users_weight=?, users_avatar=?,users_email=?, facebook_id=?"
 						  + " WHERE users_id = ? ";
@@ -58,7 +58,7 @@ module.exports =  {
 			  }
 		
         conn.query(sql, [row.users_name, row.users_age, row.users_height, row.users_weight, row.users_avatar, row.users_email, row.facebook_id,  row.users_id],function(err,data){
-         
+              
           if(!err && !row.users_id){
             row.users_id = data.insertId;
           }

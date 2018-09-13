@@ -19,7 +19,7 @@ angular.module("app").service('facebook',function($q, $http){
                     var deferred = $q.defer();
                     
                     FB.init({
-                        appId      : '1533200033658441',
+                        appId      : '701683419973901',
                         cookie     : true,  
                         xfbml      : true,
                         status     :true,
