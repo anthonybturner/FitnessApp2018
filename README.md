@@ -1,5 +1,7 @@
 # Fitness App 2018 web app
 A web application for tracking nutrition, exercise, weight, and extra goals (eg. sleep).
+It uses NodeJS and Express for the server-side along with AngularJS and the MVC design pattern. 
+The app queries and saves data for the currently logged-in user.
 
 <b>Nutrition:</b> Tracks the number of calories, protien, fiber, cholestrol, and other nutritional factors in a day, week, month and year. The nutrition page records the current intake and gives a ratio of a total suggested intake. For example: the user wants a max of 300mg for cholestrol, and the current intake is 50 mg; therefore, the current ratio shown is: 50mg of 300mg (16.6% reached).
 
